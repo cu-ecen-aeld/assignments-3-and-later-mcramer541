@@ -24,9 +24,9 @@ fi
 
 
 totfiles=$(find "$filesdir" -type f | wc -l)
-tothits=$(grep =r "$filesdir" -e "$searchstr" | wc -l)
+tothits=$(grep -r "$filesdir" -e "$searchstr" | wc -l)
 
-echo "the number of files are $totfiles and the number of matching lines are $tothits"
+echo "The number of files are $totfiles and the number of matching lines are $tothits"
 
 exit 0
 
