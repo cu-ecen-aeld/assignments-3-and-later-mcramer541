@@ -16,8 +16,9 @@ int main(int argc, char *argv[]) {
 
 	char *writefile = argv[1];
 	char *writestr = argv[2];
+	openlog(NULL, LOG_PID,LOG_USER);
 	
-	if (argc != 2) {
+	if (argc < 3) {
 		syslog(LOG_USER | LOG_ERR, "Incorrect number of arguments!");
 		return 1;
 
@@ -37,7 +38,8 @@ int main(int argc, char *argv[]) {
 	//Write the values to the file
 	fprintf(file, "%s",writestr);
 	
-	//Close the file
+	//Close the file:
+	closelog();
 	fclose(file);
 	
 	return 0;
