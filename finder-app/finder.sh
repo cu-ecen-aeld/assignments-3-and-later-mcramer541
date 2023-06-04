@@ -1,7 +1,7 @@
 #!/bin/sh
 
 #Matt Cramer
-#Assignment 1
+#Assignment 1 
 
 #Label the two variables that are being passed through as desribed in the assignment
 filesdir=$1
