@@ -97,23 +97,6 @@ export SYSROOT=$(${CROSS_COMPILE}gcc -print-sysroot)
 sudo cp -r $SYSROOT/lib64/* "${OUTDIR}/rootfs/lib64"
 sudo cp -r $SYSROOT/lib/* "${OUTDIR}/rootfs/lib"
 
-# Translation: Copy the sysroot's cross-compiler library dependencies into the new root file system
-# CC_ROOT=$("$CROSS_COMPILE"gcc -print-sysroot)
-
-# echo "CC_ROOT is " "$CC_ROOT"
-# # Copy libm dependencies (from "find -name libm*")
-# cp "$CC_ROOT"/lib64/libm-2.31.so ./lib64
-# cp "$CC_ROOT"/lib64/libm.so.6 ./lib64
-# cp "$CC_ROOT"/lib64/libmemusage.so ./lib64
-# cp "$CC_ROOT"/usr/lib64/libm.so ./lib64
-
-# # Copy libresolv dependencies (from "find -name libresolve*")
-# cp "$CC_ROOT"/lib64/libresolv.so.2 ./lib
-# cp "$CC_ROOT"/lib64/libresolv-2.31.so ./lib
-# cp "$CC_ROOT"/usr/lib64/libresolv.so ./lib
-
-# # Copy libc dependencies (from "find -name libc*")
-# # There are NONE in ./libc within the sysroot
 
 # TODO: Make device nodes
 # cd "${OUTDIR}"/rootfs
@@ -144,5 +127,4 @@ sudo chown -R root:root *
 echo "Create initramfs.cpio.gz"
 find . | cpio -H newc -ov --owner root:root > "$OUTDIR"/initramfs.cpio
 cd "$OUTDIR"
-gzip -f "$OUTDIR"/initramfs.cpio
-
+gzip -f /initramfs.cpio
