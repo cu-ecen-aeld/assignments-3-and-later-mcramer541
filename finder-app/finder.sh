@@ -29,4 +29,4 @@ tothits=$(grep -r "$filesdir" -e "$searchstr" | wc -l)
 echo "The number of files are $totfiles and the number of matching lines are $tothits"
 
 exit 0
-
+#retest
