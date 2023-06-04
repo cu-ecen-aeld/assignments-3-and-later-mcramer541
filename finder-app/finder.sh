@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 #Matt Cramer
 #Assignment 1
