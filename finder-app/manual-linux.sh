@@ -123,7 +123,7 @@ echo "Change user and group owners to be root"
 cd "$OUTDIR"/rootfs
 sudo chown -R root:root *
 
-# TODO: Create initramfs.cpio.gz
+# TODO: Create initramfs.cpio.g
 echo "Create initramfs.cpio.gz"
 find . | cpio -H newc -ov --owner root:root > "$OUTDIR"/initramfs.cpio
 cd "$OUTDIR"
