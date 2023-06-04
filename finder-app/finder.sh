@@ -7,7 +7,7 @@
 filesdir=$1
 searchstr=$2
 
-
+#I don't understand
 #This if statement checks how many arguments are passed and exits if there are not two, one for each variable
 if [ $# -ne 2 ]
 then
