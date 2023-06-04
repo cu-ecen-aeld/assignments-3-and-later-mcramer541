@@ -22,6 +22,7 @@ else
 	echo "Using passed directory ${OUTDIR} for output"
 fi
 
+#fix
 OUTDIR=$(realpath $OUTDIR)
 if [ ! -d "$OUTDIR" ]; then
     mkdir -p ${OUTDIR} 
