@@ -1,10 +1,8 @@
-CROSS_COMPILE = 
+CROSS_COMPILE ?= 
+CC = $(CROSS_COMPILE)gcc
 
-
-make:
-	$(CROSS_COMPILE)gcc -g -Wall -c -o writer.o writer.c
-	$(CROSS_COMPILE)gcc -g -Wall -I/ writer.o -o writer
+writer : writer.c
+	$(CC) -o $@ $<
 
 clean:
-	rm -f *.o writer
-
+	rm -rf writer

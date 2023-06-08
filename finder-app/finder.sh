@@ -1,32 +1,15 @@
-#!/bin/sh
+#!/bin/bash
 
-#Matt Cramer
-#Assignment 1 
-
-#Label the two variables that are being passed through as desribed in the assignment
-filesdir=$1
-searchstr=$2
-
-#I don't understand
-#This if statement checks how many arguments are passed and exits if there are not two, one for each variable
 if [ $# -ne 2 ]
 then
-	echo "There must be two variables input"
-	exit 1
-fi
-
-#This if statement checks if the file exists on the document
-if [ ! -d $filesdir ]
+    echo "Usage: finder.sh [filesdir] [searchstr]"
+    exit 1
+elif [ ! -d "$1" ]
 then
-	echo "This directory does not exist or the variable is incorrectly formated"
-	exit 1
+    echo "Error: [filesdir] not a directory"
+    exit 1
 fi
 
-
-totfiles=$(find "$filesdir" -type f | wc -l)
-tothits=$(grep -r "$filesdir" -e "$searchstr" | wc -l)
-
-echo "The number of files are $totfiles and the number of matching lines are $tothits"
-
+echo "The number of files are $(find $1 -type f | wc -l)" \
+     "and the number of matching lines are $(grep -Rs $2 $1 | wc -l)"
 exit 0
-

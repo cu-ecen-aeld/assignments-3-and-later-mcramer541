@@ -1,34 +1,17 @@
 #!/bin/bash
 
-writefile=$1
-writestr=$2
-
 if [ $# -ne 2 ]
-then 
-	echo "This file requires two arguments, writefile and writestr"
-	exit 1
+then
+    echo "Usage: writer.sh [writefile] [writestr]"
+    exit 1
 fi
 
+mkdir -p $(dirname $1)
+echo $2 > $1
 
-folder=$(dirname "$writefile")
-
-#make the folder if it does not exist
-if [ ! -d $folder ]
+if [ $? -eq 1 ]
 then
-	mkdir -p $folder
+    echo "Could not create $1"
+    exit 1
 fi
-
-#put the contents of the string into the folder
-echo "$writestr" > "$writefile"
-
-#check to see if the writefile exists, if it doesn't exist, show the error otherwise exit
-if [ ! -f $writefile ]
-then
-	echo "The file could not be created"
-       exit 1
-else
-	echo "Sucessfully created the file!"
-	exit 0
-
-fi 
-
+exit 0
