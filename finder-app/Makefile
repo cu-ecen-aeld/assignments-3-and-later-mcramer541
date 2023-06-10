@@ -1,12 +1,13 @@
-CROSS_COMPILE ?= 
-CC = $(CROSS_COMPILE)gcc
+CC=gcc
+CFLAGS=-Wall -std=c11
 
-all : writer.c
-	$(CC) -o $@ $<
+SRC=writer.c
+OUTPUT=writer
 
+all: clean $(OUTPUT)
 
-writer : writer.c
-	$(CC) -o $@ $<
+writer: $(SRC)
+	$(CROSS_COMPILE)$(CC) $(CFLAGS) -o $(OUTPUT) $(SRC)
 
 clean:
-	rm -rf writer
+	rm -f $(OUTPUT)
